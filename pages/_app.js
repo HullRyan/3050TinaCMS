@@ -20,7 +20,7 @@ const App = ({ Component, pageProps }) => {
         editMode={
           <TinaCMS
             cmsCallback={(cms) => {
-              cms.flags.set("tina-admin", false);
+              cms.flags.set("tina-admin", true);
 
               import("tinacms").then(({ RouteMappingPlugin }) => {
                 const RouteMapping = new RouteMappingPlugin(
