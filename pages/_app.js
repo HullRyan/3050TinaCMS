@@ -1,6 +1,8 @@
 import dynamic from "next/dynamic";
 import { TinaEditProvider } from "tinacms/dist/edit-state";
-
+import styles from "../styles/default.css";
+import { RouteMappingPlugin } from "tinacms";
+import { useTina } from "tinacms/dist/edit-state";
 // @ts-ignore FIXME: default export needs to be 'ComponentType<{}>
 const TinaCMS = dynamic(() => import("tinacms"), { ssr: false });
 
@@ -19,28 +21,34 @@ const App = ({ Component, pageProps }) => {
         showEditButton={true}
         editMode={
           <TinaCMS
-            cmsCallback={(cms) => {
-              cms.flags.set("tina-admin", true);
+          cmsCallback={(cms) => {
+            /**
+             * Enables `tina-admin` specific features in the Tina Sidebar
+             */
+            cms.flags.set("tina-admin", true);
+            /**
+             * When `tina-admin` is enabled, this plugin configures contextual editing for collections
+             */
+            const RouteMapping = new RouteMappingPlugin(
+              (collection, document) => {
+                if (["authors", "global"].includes(collection.name)) {
+                  return undefined;
+                }
+                return `/${collection.name}/${document.sys.filename}`;
+              }
+            );
+            cms.plugins.add(RouteMapping);
 
-              import("tinacms").then(({ RouteMappingPlugin }) => {
-                const RouteMapping = new RouteMappingPlugin(
-                  (collection, document) => {
-                    if (["page"].includes(collection.name)) {
-                      if (document.sys.filename === "home") {
-                        return "/";
-                      }
-                    }
-
-                    if (["post"].includes(collection.name)) {
-                      return `/posts/${document.sys.filename}`;
-                    }
-
-                    return undefined;
-                  }
-                );
-
-                cms.plugins.add(RouteMapping);
-              });
+            return cms;
+          }}
+            documentCreatorCallback={{
+              /**
+               * After a new document is created, redirect to its location
+               */
+              onNewDocument: ({ collection: { slug }, breadcrumbs }) => {
+                const relativeUrl = `/${slug}/${breadcrumbs.join("/")}`;
+                return (window.location.href = relativeUrl);
+              },
             }}
             apiURL={apiURL}
           >

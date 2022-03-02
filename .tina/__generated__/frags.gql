@@ -1,8 +1,37 @@
-fragment PageParts on Page {
+fragment StudentParts on Student {
+  title
+  author {
+    ... on Document {
+      id
+    }
+  }
+  date
   body
 }
 
-fragment PostParts on Post {
+fragment TeacherParts on Teacher {
   title
+  author {
+    ... on Document {
+      id
+    }
+  }
+  date
   body
+}
+
+fragment ParentParts on Parent {
+  title
+  author {
+    ... on Document {
+      id
+    }
+  }
+  date
+  body
+}
+
+fragment AuthorsParts on Authors {
+  name
+  avatar
 }

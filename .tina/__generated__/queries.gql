@@ -1,5 +1,5 @@
-query getPageDocument($relativePath: String!) {
-  getPageDocument(relativePath: $relativePath) {
+query getStudentDocument($relativePath: String!) {
+  getStudentDocument(relativePath: $relativePath) {
     sys {
       filename
       basename
@@ -10,13 +10,13 @@ query getPageDocument($relativePath: String!) {
     }
     id
     data {
-      ...PageParts
+      ...StudentParts
     }
   }
 }
 
-query getPageList {
-  getPageList {
+query getStudentList {
+  getStudentList {
     totalCount
     edges {
       node {
@@ -30,15 +30,15 @@ query getPageList {
           extension
         }
         data {
-          ...PageParts
+          ...StudentParts
         }
       }
     }
   }
 }
 
-query getPostDocument($relativePath: String!) {
-  getPostDocument(relativePath: $relativePath) {
+query getTeacherDocument($relativePath: String!) {
+  getTeacherDocument(relativePath: $relativePath) {
     sys {
       filename
       basename
@@ -49,13 +49,13 @@ query getPostDocument($relativePath: String!) {
     }
     id
     data {
-      ...PostParts
+      ...TeacherParts
     }
   }
 }
 
-query getPostList {
-  getPostList {
+query getTeacherList {
+  getTeacherList {
     totalCount
     edges {
       node {
@@ -69,7 +69,85 @@ query getPostList {
           extension
         }
         data {
-          ...PostParts
+          ...TeacherParts
+        }
+      }
+    }
+  }
+}
+
+query getParentDocument($relativePath: String!) {
+  getParentDocument(relativePath: $relativePath) {
+    sys {
+      filename
+      basename
+      breadcrumbs
+      path
+      relativePath
+      extension
+    }
+    id
+    data {
+      ...ParentParts
+    }
+  }
+}
+
+query getParentList {
+  getParentList {
+    totalCount
+    edges {
+      node {
+        id
+        sys {
+          filename
+          basename
+          breadcrumbs
+          path
+          relativePath
+          extension
+        }
+        data {
+          ...ParentParts
+        }
+      }
+    }
+  }
+}
+
+query getAuthorsDocument($relativePath: String!) {
+  getAuthorsDocument(relativePath: $relativePath) {
+    sys {
+      filename
+      basename
+      breadcrumbs
+      path
+      relativePath
+      extension
+    }
+    id
+    data {
+      ...AuthorsParts
+    }
+  }
+}
+
+query getAuthorsList {
+  getAuthorsList {
+    totalCount
+    edges {
+      node {
+        id
+        sys {
+          filename
+          basename
+          breadcrumbs
+          path
+          relativePath
+          extension
+        }
+        data {
+          ...AuthorsParts
         }
       }
     }

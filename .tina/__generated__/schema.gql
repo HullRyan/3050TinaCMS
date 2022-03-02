@@ -48,10 +48,14 @@ type Query {
   getDocument(collection: String, relativePath: String): DocumentNode!
   getDocumentList(before: String, after: String, first: Float, last: Float): DocumentConnection!
   getDocumentFields: JSON!
-  getPageDocument(relativePath: String): PageDocument!
-  getPageList(before: String, after: String, first: Float, last: Float): PageConnection!
-  getPostDocument(relativePath: String): PostDocument!
-  getPostList(before: String, after: String, first: Float, last: Float): PostConnection!
+  getStudentDocument(relativePath: String): StudentDocument!
+  getStudentList(before: String, after: String, first: Float, last: Float): StudentConnection!
+  getTeacherDocument(relativePath: String): TeacherDocument!
+  getTeacherList(before: String, after: String, first: Float, last: Float): TeacherConnection!
+  getParentDocument(relativePath: String): ParentDocument!
+  getParentList(before: String, after: String, first: Float, last: Float): ParentConnection!
+  getAuthorsDocument(relativePath: String): AuthorsDocument!
+  getAuthorsList(before: String, after: String, first: Float, last: Float): AuthorsConnection!
 }
 
 type DocumentConnectionEdges {
@@ -77,79 +81,165 @@ type Collection {
   documents(before: String, after: String, first: Float, last: Float): DocumentConnection!
 }
 
-union DocumentNode = PageDocument | PostDocument
+union DocumentNode = StudentDocument | TeacherDocument | ParentDocument | AuthorsDocument
 
-type Page {
+union StudentAuthorDocument = AuthorsDocument
+
+type Student {
+  title: String
+  author: StudentAuthorDocument
+  date: String
   body: JSON
 }
 
-type PageDocument implements Node & Document {
+type StudentDocument implements Node & Document {
   id: ID!
   sys: SystemInfo!
-  data: Page!
+  data: Student!
   form: JSON!
   values: JSON!
   dataJSON: JSON!
 }
 
-type PageConnectionEdges {
+type StudentConnectionEdges {
   cursor: String
-  node: PageDocument
+  node: StudentDocument
 }
 
-type PageConnection implements Connection {
+type StudentConnection implements Connection {
   pageInfo: PageInfo
   totalCount: Float!
-  edges: [PageConnectionEdges]
+  edges: [StudentConnectionEdges]
 }
 
-type Post {
+union TeacherAuthorDocument = AuthorsDocument
+
+type Teacher {
   title: String
-  body: String
+  author: TeacherAuthorDocument
+  date: String
+  body: JSON
 }
 
-type PostDocument implements Node & Document {
+type TeacherDocument implements Node & Document {
   id: ID!
   sys: SystemInfo!
-  data: Post!
+  data: Teacher!
   form: JSON!
   values: JSON!
   dataJSON: JSON!
 }
 
-type PostConnectionEdges {
+type TeacherConnectionEdges {
   cursor: String
-  node: PostDocument
+  node: TeacherDocument
 }
 
-type PostConnection implements Connection {
+type TeacherConnection implements Connection {
   pageInfo: PageInfo
   totalCount: Float!
-  edges: [PostConnectionEdges]
+  edges: [TeacherConnectionEdges]
+}
+
+union ParentAuthorDocument = AuthorsDocument
+
+type Parent {
+  title: String
+  author: ParentAuthorDocument
+  date: String
+  body: JSON
+}
+
+type ParentDocument implements Node & Document {
+  id: ID!
+  sys: SystemInfo!
+  data: Parent!
+  form: JSON!
+  values: JSON!
+  dataJSON: JSON!
+}
+
+type ParentConnectionEdges {
+  cursor: String
+  node: ParentDocument
+}
+
+type ParentConnection implements Connection {
+  pageInfo: PageInfo
+  totalCount: Float!
+  edges: [ParentConnectionEdges]
+}
+
+type Authors {
+  name: String
+  avatar: String
+}
+
+type AuthorsDocument implements Node & Document {
+  id: ID!
+  sys: SystemInfo!
+  data: Authors!
+  form: JSON!
+  values: JSON!
+  dataJSON: JSON!
+}
+
+type AuthorsConnectionEdges {
+  cursor: String
+  node: AuthorsDocument
+}
+
+type AuthorsConnection implements Connection {
+  pageInfo: PageInfo
+  totalCount: Float!
+  edges: [AuthorsConnectionEdges]
 }
 
 type Mutation {
   addPendingDocument(collection: String!, relativePath: String!, template: String): DocumentNode!
   updateDocument(collection: String, relativePath: String!, params: DocumentMutation!): DocumentNode!
   createDocument(collection: String, relativePath: String!, params: DocumentMutation!): DocumentNode!
-  updatePageDocument(relativePath: String!, params: PageMutation!): PageDocument!
-  createPageDocument(relativePath: String!, params: PageMutation!): PageDocument!
-  updatePostDocument(relativePath: String!, params: PostMutation!): PostDocument!
-  createPostDocument(relativePath: String!, params: PostMutation!): PostDocument!
+  updateStudentDocument(relativePath: String!, params: StudentMutation!): StudentDocument!
+  createStudentDocument(relativePath: String!, params: StudentMutation!): StudentDocument!
+  updateTeacherDocument(relativePath: String!, params: TeacherMutation!): TeacherDocument!
+  createTeacherDocument(relativePath: String!, params: TeacherMutation!): TeacherDocument!
+  updateParentDocument(relativePath: String!, params: ParentMutation!): ParentDocument!
+  createParentDocument(relativePath: String!, params: ParentMutation!): ParentDocument!
+  updateAuthorsDocument(relativePath: String!, params: AuthorsMutation!): AuthorsDocument!
+  createAuthorsDocument(relativePath: String!, params: AuthorsMutation!): AuthorsDocument!
 }
 
 input DocumentMutation {
-  page: PageMutation
-  post: PostMutation
+  student: StudentMutation
+  teacher: TeacherMutation
+  parent: ParentMutation
+  authors: AuthorsMutation
 }
 
-input PageMutation {
+input StudentMutation {
+  title: String
+  author: String
+  date: String
   body: JSON
 }
 
-input PostMutation {
+input TeacherMutation {
   title: String
-  body: String
+  author: String
+  date: String
+  body: JSON
+}
+
+input ParentMutation {
+  title: String
+  author: String
+  date: String
+  body: JSON
+}
+
+input AuthorsMutation {
+  name: String
+  avatar: String
 }
 
 schema {

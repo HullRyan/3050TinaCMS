@@ -10,7 +10,7 @@ export const Layout = (props) => {
     >
       <Head>
         <title>Tina App</title>
-        <meta name="description" content="A TinaCMS Application" />
+        <meta name="description" content="A TinaCMS Example Application" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <header>
@@ -18,8 +18,16 @@ export const Layout = (props) => {
           <a>Home</a>
         </Link>
         {' | '}
-        <Link href="/posts">
-          <a>Posts</a>
+        <Link href="/student">
+          <a>Student</a>
+        </Link>
+        {' | '}
+        <Link href="/teacher">
+          <a>Teacher</a>
+        </Link>
+        {' | '}
+        <Link href="/parent">
+          <a>Parent</a>
         </Link>
       </header>
       <main>{props.children}</main>

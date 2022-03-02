@@ -3,8 +3,10 @@
     "type": "DocumentConnection",
     "resolveType": "multiCollectionDocumentList",
     "collections": [
-      "page",
-      "post"
+      "student",
+      "teacher",
+      "parent",
+      "authors"
     ]
   },
   "Node": {
@@ -17,28 +19,70 @@
     "createDocument": "create",
     "updateDocument": "update"
   },
-  "PageDocument": {
-    "type": "PageDocument",
+  "StudentAuthorDocument": {
+    "type": "StudentAuthorDocument",
+    "resolveType": "multiCollectionDocument",
+    "createDocument": "create",
+    "updateDocument": "update"
+  },
+  "StudentDocument": {
+    "type": "StudentDocument",
     "resolveType": "collectionDocument",
-    "collection": "page",
-    "createPageDocument": "create",
-    "updatePageDocument": "update"
+    "collection": "student",
+    "createStudentDocument": "create",
+    "updateStudentDocument": "update"
   },
-  "PageConnection": {
-    "type": "PageConnection",
+  "StudentConnection": {
+    "type": "StudentConnection",
     "resolveType": "collectionDocumentList",
-    "collection": "page"
+    "collection": "student"
   },
-  "PostDocument": {
-    "type": "PostDocument",
+  "TeacherAuthorDocument": {
+    "type": "TeacherAuthorDocument",
+    "resolveType": "multiCollectionDocument",
+    "createDocument": "create",
+    "updateDocument": "update"
+  },
+  "TeacherDocument": {
+    "type": "TeacherDocument",
     "resolveType": "collectionDocument",
-    "collection": "post",
-    "createPostDocument": "create",
-    "updatePostDocument": "update"
+    "collection": "teacher",
+    "createTeacherDocument": "create",
+    "updateTeacherDocument": "update"
   },
-  "PostConnection": {
-    "type": "PostConnection",
+  "TeacherConnection": {
+    "type": "TeacherConnection",
     "resolveType": "collectionDocumentList",
-    "collection": "post"
+    "collection": "teacher"
+  },
+  "ParentAuthorDocument": {
+    "type": "ParentAuthorDocument",
+    "resolveType": "multiCollectionDocument",
+    "createDocument": "create",
+    "updateDocument": "update"
+  },
+  "ParentDocument": {
+    "type": "ParentDocument",
+    "resolveType": "collectionDocument",
+    "collection": "parent",
+    "createParentDocument": "create",
+    "updateParentDocument": "update"
+  },
+  "ParentConnection": {
+    "type": "ParentConnection",
+    "resolveType": "collectionDocumentList",
+    "collection": "parent"
+  },
+  "AuthorsDocument": {
+    "type": "AuthorsDocument",
+    "resolveType": "collectionDocument",
+    "collection": "authors",
+    "createAuthorsDocument": "create",
+    "updateAuthorsDocument": "update"
+  },
+  "AuthorsConnection": {
+    "type": "AuthorsConnection",
+    "resolveType": "collectionDocumentList",
+    "collection": "authors"
   }
 }
