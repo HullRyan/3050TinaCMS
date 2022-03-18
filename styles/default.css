@@ -10,7 +10,6 @@
 
 body {
     margin: 0;
-    height: 4000px;
 }
 
 html {
@@ -58,7 +57,7 @@ html {
   .content {
     margin-left: 200px;
     padding: 1px 16px;
-    height: 1000px;
+    height: 100%;
   }
   
   /* On screens that are less than 700px wide, make the sidebar into a topbar */

@@ -1,6 +1,7 @@
 import { staticRequest } from "tinacms";
 import { Layout } from "../../components/Layout";
 import { useTina } from "tinacms/dist/edit-state";
+import { TinaMarkdown } from 'tinacms/dist/rich-text'
 
 const query = `query getPost($relativePath: String!) {
   getTeacherDocument(relativePath: $relativePath) {
@@ -28,6 +29,7 @@ export default function Home(props) {
 
   return (
     <>
+      <TinaMarkdown content={data.getTeacherDocument.data.body}/>
       <code>
         <pre
           style={{

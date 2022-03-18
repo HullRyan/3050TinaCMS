@@ -27,7 +27,6 @@ export default function Home(props) {
     variables: props.variables,
     data: props.data,
   });
-  const mdown = data.getParentDocument.data.body;
   return (
     <>
         <TinaMarkdown content={data.getParentDocument.data.body} />
