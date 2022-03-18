@@ -28,7 +28,7 @@ export default function Home(props) {
   });
   const postsList = data.getTeacherList.edges;
   return (
-    <Layout>
+    <>
       <h1>Teacher Posts</h1>
       <div>
         {postsList.map((post) => (
@@ -39,7 +39,7 @@ export default function Home(props) {
           </div>
         ))}
       </div>
-    </Layout>
+    </>
   );
 }
 

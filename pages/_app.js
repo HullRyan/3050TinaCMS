@@ -5,6 +5,7 @@ import { RouteMappingPlugin } from "tinacms";
 import { useTina } from "tinacms/dist/edit-state";
 // @ts-ignore FIXME: default export needs to be 'ComponentType<{}>
 const TinaCMS = dynamic(() => import("tinacms"), { ssr: false });
+import { Layout } from "./../components/Layout";
 
 const branch = "main";
 // When working locally, hit our local filesystem.
@@ -21,26 +22,26 @@ const App = ({ Component, pageProps }) => {
         showEditButton={true}
         editMode={
           <TinaCMS
-          cmsCallback={(cms) => {
-            /**
-             * Enables `tina-admin` specific features in the Tina Sidebar
-             */
-            cms.flags.set("tina-admin", true);
-            /**
-             * When `tina-admin` is enabled, this plugin configures contextual editing for collections
-             */
-            const RouteMapping = new RouteMappingPlugin(
-              (collection, document) => {
-                if (["authors", "global"].includes(collection.name)) {
-                  return undefined;
+            cmsCallback={(cms) => {
+              /**
+               * Enables `tina-admin` specific features in the Tina Sidebar
+               */
+              cms.flags.set("tina-admin", true);
+              /**
+               * When `tina-admin` is enabled, this plugin configures contextual editing for collections
+               */
+              const RouteMapping = new RouteMappingPlugin(
+                (collection, document) => {
+                  if (["authors", "global"].includes(collection.name)) {
+                    return undefined;
+                  }
+                  return `/${collection.name}/${document.sys.filename}`;
                 }
-                return `/${collection.name}/${document.sys.filename}`;
-              }
-            );
-            cms.plugins.add(RouteMapping);
+              );
+              cms.plugins.add(RouteMapping);
 
-            return cms;
-          }}
+              return cms;
+            }}
             documentCreatorCallback={{
               /**
                * After a new document is created, redirect to its location
@@ -52,11 +53,15 @@ const App = ({ Component, pageProps }) => {
             }}
             apiURL={apiURL}
           >
-            <Component {...pageProps} />
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
           </TinaCMS>
         }
       >
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </TinaEditProvider>
     </>
   );

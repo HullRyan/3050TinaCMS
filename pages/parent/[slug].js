@@ -29,10 +29,10 @@ export default function Home(props) {
   });
   const mdown = data.getParentDocument.data.body;
   return (
-    <Layout>
+    <>
         <TinaMarkdown content={data.getParentDocument.data.body} />
       <div>{JSON.stringify(data.getParentDocument.data, null, 2)}</div>
-    </Layout>
+    </>
   );
 }
 

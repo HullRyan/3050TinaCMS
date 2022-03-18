@@ -28,7 +28,7 @@ export default function Home(props) {
   console.log(data);
 
   return (
-    <Layout>
+    <>
       <code>
         <pre
           style={{
@@ -38,7 +38,7 @@ export default function Home(props) {
           {JSON.stringify(data.getStudentDocument.data, null, 2)}
         </pre>
       </code>
-    </Layout>
+    </>
   );
 }
 

@@ -28,7 +28,7 @@ export default function Home(props) {
   });
   const postsList = data.getParentList.edges;
   return (
-    <Layout>
+    <>
       <h1>Parent Posts</h1>
       <div>
         {postsList.map((post) => (
@@ -39,7 +39,7 @@ export default function Home(props) {
           </div>
         ))}
       </div>
-    </Layout>
+    </>
   );
 }
 

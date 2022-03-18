@@ -28,10 +28,10 @@ export default function Home(props) {
   });
   const postsList = data.getStudentList.edges;
   return (
-    <Layout>
+    <>
       <h1>Student Posts</h1>
       <div>
-      {postsList.map((post) => (
+        {postsList.map((post) => (
           <div key={post.node.id}>
             <Link href={`/student/${post.node.sys.filename}`}>
               <a>{post.node.data.title}</a>
@@ -39,7 +39,7 @@ export default function Home(props) {
           </div>
         ))}
       </div>
-    </Layout>
+    </>
   );
 }
 
