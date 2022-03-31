@@ -29,6 +29,7 @@ const components: Components<{
     },
   };
 
+  
 
 
 export const Post = ({ data }) => {
