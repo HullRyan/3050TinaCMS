@@ -10,6 +10,8 @@ const query = `{
         id
         data { 
           title
+          author
+          date
         }
         sys {
           filename
@@ -32,9 +34,13 @@ export default function Home(props) {
       <h1>Student Posts</h1>
       <div>
         {postsList.map((post) => (
-          <div key={post.node.id}>
+          <div key={post.node.id} className="list-post">
             <Link href={`/student/${post.node.sys.filename}`}>
-              <a>{post.node.data.title}</a>
+              <a className="no-styling">
+                <div className="list-title">{post.node.data.title}</div>
+                <div className="list-author">{post.node.data.author}</div>
+                <div className="list-date">{new Date(post.node.data.date).toUTCString()}</div>
+              </a>
             </Link>
           </div>
         ))}

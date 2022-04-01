@@ -5,8 +5,7 @@
     "collections": [
       "student",
       "teacher",
-      "parent",
-      "authors"
+      "parent"
     ]
   },
   "Node": {
@@ -15,12 +14,6 @@
   },
   "DocumentNode": {
     "type": "DocumentNode",
-    "resolveType": "multiCollectionDocument",
-    "createDocument": "create",
-    "updateDocument": "update"
-  },
-  "StudentAuthorDocument": {
-    "type": "StudentAuthorDocument",
     "resolveType": "multiCollectionDocument",
     "createDocument": "create",
     "updateDocument": "update"
@@ -37,12 +30,6 @@
     "resolveType": "collectionDocumentList",
     "collection": "student"
   },
-  "TeacherAuthorDocument": {
-    "type": "TeacherAuthorDocument",
-    "resolveType": "multiCollectionDocument",
-    "createDocument": "create",
-    "updateDocument": "update"
-  },
   "TeacherDocument": {
     "type": "TeacherDocument",
     "resolveType": "collectionDocument",
@@ -55,12 +42,6 @@
     "resolveType": "collectionDocumentList",
     "collection": "teacher"
   },
-  "ParentAuthorDocument": {
-    "type": "ParentAuthorDocument",
-    "resolveType": "multiCollectionDocument",
-    "createDocument": "create",
-    "updateDocument": "update"
-  },
   "ParentDocument": {
     "type": "ParentDocument",
     "resolveType": "collectionDocument",
@@ -72,17 +53,5 @@
     "type": "ParentConnection",
     "resolveType": "collectionDocumentList",
     "collection": "parent"
-  },
-  "AuthorsDocument": {
-    "type": "AuthorsDocument",
-    "resolveType": "collectionDocument",
-    "collection": "authors",
-    "createAuthorsDocument": "create",
-    "updateAuthorsDocument": "update"
-  },
-  "AuthorsConnection": {
-    "type": "AuthorsConnection",
-    "resolveType": "collectionDocumentList",
-    "collection": "authors"
   }
 }

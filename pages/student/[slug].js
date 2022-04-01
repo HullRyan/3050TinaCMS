@@ -1,17 +1,13 @@
 import { staticRequest } from "tinacms";
 import { Layout, Post } from "../../components/Layout";
 import { useTina } from "tinacms/dist/edit-state";
-import { TinaMarkdown } from 'tinacms/dist/rich-text';
+import { TinaMarkdown } from "tinacms/dist/rich-text";
 
 const query = `query getPostDocument($relativePath: String!) {
   getStudentDocument(relativePath: $relativePath) {
     data {
       title
-      author {
-      ... on Document {
-        id
-        }
-      }
+      author
       date
       body
     }
@@ -29,18 +25,22 @@ export default function Home(props) {
   console.log(data);
 
   return (
-    <>
-    <TinaMarkdown content={data.getStudentDocument.data.body}/>
-      <code>
-        <pre
-          style={{
-            backgroundColor: "lightgray",
-          }}
-        >
-          {JSON.stringify(data.getStudentDocument.data, null, 2)}
-        </pre>
-      </code>
-    </>
+    <div className="post-container">
+      <div className="post">
+        {data?.getStudentDocument?.data?.title && (
+          <div className="title">{data?.getStudentDocument?.data?.title}</div>
+        )}
+        {data?.getStudentDocument?.data?.author && (
+          <div className="author">
+            Posted by: {data?.getStudentDocument?.data?.author}
+          </div>
+        )}
+        {data?.getStudentDocument?.data?.date && (
+          <div className="date">{data?.getStudentDocument?.data?.date}</div>
+        )}
+        <TinaMarkdown content={data?.getStudentDocument?.data?.body} />
+      </div>
+    </div>
   );
 }
 

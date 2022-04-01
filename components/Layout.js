@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Head from "next/head";
+import Logo from "../components/Logo";
 
 export const Layout = (props) => {
   return (
@@ -10,13 +11,9 @@ export const Layout = (props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="sidebar">
-        <div>
+        <div className="homeBtnImageContainer">
           <Link href="/">
-            <img
-              src="WilsonCrest.png"
-              alt="Wilson "
-              className="homeBtnImage"
-            />
+            <Logo className="homeBtnImage"/>
           </Link>
         </div>
         <Link href="/student">

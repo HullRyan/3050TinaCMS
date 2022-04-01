@@ -26,7 +26,7 @@ const App = ({ Component, pageProps }) => {
               /**
                * Enables `tina-admin` specific features in the Tina Sidebar
                */
-              cms.flags.set("tina-admin", true);
+              cms.flags.set("tina-admin", false);
               /**
                * When `tina-admin` is enabled, this plugin configures contextual editing for collections
                */

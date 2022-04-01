@@ -1,37 +1,20 @@
 fragment StudentParts on Student {
   title
-  author {
-    ... on Document {
-      id
-    }
-  }
+  author
   date
   body
 }
 
 fragment TeacherParts on Teacher {
   title
-  author {
-    ... on Document {
-      id
-    }
-  }
+  author
   date
   body
 }
 
 fragment ParentParts on Parent {
   title
-  author {
-    ... on Document {
-      id
-    }
-  }
+  author
   date
   body
-}
-
-fragment AuthorsParts on Authors {
-  name
-  avatar
 }

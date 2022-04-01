@@ -54,8 +54,6 @@ type Query {
   getTeacherList(before: String, after: String, first: Float, last: Float): TeacherConnection!
   getParentDocument(relativePath: String): ParentDocument!
   getParentList(before: String, after: String, first: Float, last: Float): ParentConnection!
-  getAuthorsDocument(relativePath: String): AuthorsDocument!
-  getAuthorsList(before: String, after: String, first: Float, last: Float): AuthorsConnection!
 }
 
 type DocumentConnectionEdges {
@@ -81,13 +79,11 @@ type Collection {
   documents(before: String, after: String, first: Float, last: Float): DocumentConnection!
 }
 
-union DocumentNode = StudentDocument | TeacherDocument | ParentDocument | AuthorsDocument
-
-union StudentAuthorDocument = AuthorsDocument
+union DocumentNode = StudentDocument | TeacherDocument | ParentDocument
 
 type Student {
   title: String
-  author: StudentAuthorDocument
+  author: String
   date: String
   body: JSON
 }
@@ -112,11 +108,9 @@ type StudentConnection implements Connection {
   edges: [StudentConnectionEdges]
 }
 
-union TeacherAuthorDocument = AuthorsDocument
-
 type Teacher {
   title: String
-  author: TeacherAuthorDocument
+  author: String
   date: String
   body: JSON
 }
@@ -141,11 +135,9 @@ type TeacherConnection implements Connection {
   edges: [TeacherConnectionEdges]
 }
 
-union ParentAuthorDocument = AuthorsDocument
-
 type Parent {
   title: String
-  author: ParentAuthorDocument
+  author: String
   date: String
   body: JSON
 }
@@ -170,31 +162,6 @@ type ParentConnection implements Connection {
   edges: [ParentConnectionEdges]
 }
 
-type Authors {
-  name: String
-  avatar: String
-}
-
-type AuthorsDocument implements Node & Document {
-  id: ID!
-  sys: SystemInfo!
-  data: Authors!
-  form: JSON!
-  values: JSON!
-  dataJSON: JSON!
-}
-
-type AuthorsConnectionEdges {
-  cursor: String
-  node: AuthorsDocument
-}
-
-type AuthorsConnection implements Connection {
-  pageInfo: PageInfo
-  totalCount: Float!
-  edges: [AuthorsConnectionEdges]
-}
-
 type Mutation {
   addPendingDocument(collection: String!, relativePath: String!, template: String): DocumentNode!
   updateDocument(collection: String, relativePath: String!, params: DocumentMutation!): DocumentNode!
@@ -205,15 +172,12 @@ type Mutation {
   createTeacherDocument(relativePath: String!, params: TeacherMutation!): TeacherDocument!
   updateParentDocument(relativePath: String!, params: ParentMutation!): ParentDocument!
   createParentDocument(relativePath: String!, params: ParentMutation!): ParentDocument!
-  updateAuthorsDocument(relativePath: String!, params: AuthorsMutation!): AuthorsDocument!
-  createAuthorsDocument(relativePath: String!, params: AuthorsMutation!): AuthorsDocument!
 }
 
 input DocumentMutation {
   student: StudentMutation
   teacher: TeacherMutation
   parent: ParentMutation
-  authors: AuthorsMutation
 }
 
 input StudentMutation {
@@ -235,11 +199,6 @@ input ParentMutation {
   author: String
   date: String
   body: JSON
-}
-
-input AuthorsMutation {
-  name: String
-  avatar: String
 }
 
 schema {

@@ -14,10 +14,9 @@ export default defineSchema({
           name: "title",
         },
         {
-          type: "reference",
+          type: "string",
           label: "Author",
           name: "author",
-          collections: ["authors"],
         },
         {
           type: "datetime",
@@ -48,10 +47,9 @@ export default defineSchema({
           name: "title",
         },
         {
-          type: "reference",
+          type: "string",
           label: "Author",
           name: "author",
-          collections: ["authors"],
         },
         {
           type: "datetime",
@@ -82,10 +80,9 @@ export default defineSchema({
           name: "title",
         },
         {
-          type: "reference",
+          type: "string",
           label: "Author",
           name: "author",
-          collections: ["authors"],
         },
         {
           type: "datetime",
@@ -101,23 +98,6 @@ export default defineSchema({
           label: "Blog Post Body",
           name: "body",
           isBody: true,
-        },
-      ],
-    },
-    {
-      label: "Authors",
-      name: "authors",
-      path: "content/authors",
-      fields: [
-        {
-          type: "string",
-          label: "Name",
-          name: "name",
-        },
-        {
-          type: "string",
-          label: "Avatar",
-          name: "avatar",
         },
       ],
     },

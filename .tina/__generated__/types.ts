@@ -73,8 +73,6 @@ export type Query = {
   getTeacherList: TeacherConnection;
   getParentDocument: ParentDocument;
   getParentList: ParentConnection;
-  getAuthorsDocument: AuthorsDocument;
-  getAuthorsList: AuthorsConnection;
 };
 
 
@@ -140,19 +138,6 @@ export type QueryGetParentListArgs = {
   last?: InputMaybe<Scalars['Float']>;
 };
 
-
-export type QueryGetAuthorsDocumentArgs = {
-  relativePath?: InputMaybe<Scalars['String']>;
-};
-
-
-export type QueryGetAuthorsListArgs = {
-  before?: InputMaybe<Scalars['String']>;
-  after?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Float']>;
-  last?: InputMaybe<Scalars['Float']>;
-};
-
 export type DocumentConnectionEdges = {
   __typename?: 'DocumentConnectionEdges';
   cursor?: Maybe<Scalars['String']>;
@@ -187,14 +172,12 @@ export type CollectionDocumentsArgs = {
   last?: InputMaybe<Scalars['Float']>;
 };
 
-export type DocumentNode = StudentDocument | TeacherDocument | ParentDocument | AuthorsDocument;
-
-export type StudentAuthorDocument = AuthorsDocument;
+export type DocumentNode = StudentDocument | TeacherDocument | ParentDocument;
 
 export type Student = {
   __typename?: 'Student';
   title?: Maybe<Scalars['String']>;
-  author?: Maybe<StudentAuthorDocument>;
+  author?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['String']>;
   body?: Maybe<Scalars['JSON']>;
 };
@@ -222,12 +205,10 @@ export type StudentConnection = Connection & {
   edges?: Maybe<Array<Maybe<StudentConnectionEdges>>>;
 };
 
-export type TeacherAuthorDocument = AuthorsDocument;
-
 export type Teacher = {
   __typename?: 'Teacher';
   title?: Maybe<Scalars['String']>;
-  author?: Maybe<TeacherAuthorDocument>;
+  author?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['String']>;
   body?: Maybe<Scalars['JSON']>;
 };
@@ -255,12 +236,10 @@ export type TeacherConnection = Connection & {
   edges?: Maybe<Array<Maybe<TeacherConnectionEdges>>>;
 };
 
-export type ParentAuthorDocument = AuthorsDocument;
-
 export type Parent = {
   __typename?: 'Parent';
   title?: Maybe<Scalars['String']>;
-  author?: Maybe<ParentAuthorDocument>;
+  author?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['String']>;
   body?: Maybe<Scalars['JSON']>;
 };
@@ -288,35 +267,6 @@ export type ParentConnection = Connection & {
   edges?: Maybe<Array<Maybe<ParentConnectionEdges>>>;
 };
 
-export type Authors = {
-  __typename?: 'Authors';
-  name?: Maybe<Scalars['String']>;
-  avatar?: Maybe<Scalars['String']>;
-};
-
-export type AuthorsDocument = Node & Document & {
-  __typename?: 'AuthorsDocument';
-  id: Scalars['ID'];
-  sys: SystemInfo;
-  data: Authors;
-  form: Scalars['JSON'];
-  values: Scalars['JSON'];
-  dataJSON: Scalars['JSON'];
-};
-
-export type AuthorsConnectionEdges = {
-  __typename?: 'AuthorsConnectionEdges';
-  cursor?: Maybe<Scalars['String']>;
-  node?: Maybe<AuthorsDocument>;
-};
-
-export type AuthorsConnection = Connection & {
-  __typename?: 'AuthorsConnection';
-  pageInfo?: Maybe<PageInfo>;
-  totalCount: Scalars['Float'];
-  edges?: Maybe<Array<Maybe<AuthorsConnectionEdges>>>;
-};
-
 export type Mutation = {
   __typename?: 'Mutation';
   addPendingDocument: DocumentNode;
@@ -328,8 +278,6 @@ export type Mutation = {
   createTeacherDocument: TeacherDocument;
   updateParentDocument: ParentDocument;
   createParentDocument: ParentDocument;
-  updateAuthorsDocument: AuthorsDocument;
-  createAuthorsDocument: AuthorsDocument;
 };
 
 
@@ -389,23 +337,10 @@ export type MutationCreateParentDocumentArgs = {
   params: ParentMutation;
 };
 
-
-export type MutationUpdateAuthorsDocumentArgs = {
-  relativePath: Scalars['String'];
-  params: AuthorsMutation;
-};
-
-
-export type MutationCreateAuthorsDocumentArgs = {
-  relativePath: Scalars['String'];
-  params: AuthorsMutation;
-};
-
 export type DocumentMutation = {
   student?: InputMaybe<StudentMutation>;
   teacher?: InputMaybe<TeacherMutation>;
   parent?: InputMaybe<ParentMutation>;
-  authors?: InputMaybe<AuthorsMutation>;
 };
 
 export type StudentMutation = {
@@ -429,75 +364,52 @@ export type ParentMutation = {
   body?: InputMaybe<Scalars['JSON']>;
 };
 
-export type AuthorsMutation = {
-  name?: InputMaybe<Scalars['String']>;
-  avatar?: InputMaybe<Scalars['String']>;
-};
+export type StudentPartsFragment = { __typename?: 'Student', title?: string | null, author?: string | null, date?: string | null, body?: any | null };
 
-export type StudentPartsFragment = { __typename?: 'Student', title?: string | null, date?: string | null, body?: any | null, author?: { __typename?: 'AuthorsDocument', id: string } | null };
+export type TeacherPartsFragment = { __typename?: 'Teacher', title?: string | null, author?: string | null, date?: string | null, body?: any | null };
 
-export type TeacherPartsFragment = { __typename?: 'Teacher', title?: string | null, date?: string | null, body?: any | null, author?: { __typename?: 'AuthorsDocument', id: string } | null };
-
-export type ParentPartsFragment = { __typename?: 'Parent', title?: string | null, date?: string | null, body?: any | null, author?: { __typename?: 'AuthorsDocument', id: string } | null };
-
-export type AuthorsPartsFragment = { __typename?: 'Authors', name?: string | null, avatar?: string | null };
+export type ParentPartsFragment = { __typename?: 'Parent', title?: string | null, author?: string | null, date?: string | null, body?: any | null };
 
 export type GetStudentDocumentQueryVariables = Exact<{
   relativePath: Scalars['String'];
 }>;
 
 
-export type GetStudentDocumentQuery = { __typename?: 'Query', getStudentDocument: { __typename?: 'StudentDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, data: { __typename?: 'Student', title?: string | null, date?: string | null, body?: any | null, author?: { __typename?: 'AuthorsDocument', id: string } | null } } };
+export type GetStudentDocumentQuery = { __typename?: 'Query', getStudentDocument: { __typename?: 'StudentDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, data: { __typename?: 'Student', title?: string | null, author?: string | null, date?: string | null, body?: any | null } } };
 
 export type GetStudentListQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetStudentListQuery = { __typename?: 'Query', getStudentList: { __typename?: 'StudentConnection', totalCount: number, edges?: Array<{ __typename?: 'StudentConnectionEdges', node?: { __typename?: 'StudentDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, data: { __typename?: 'Student', title?: string | null, date?: string | null, body?: any | null, author?: { __typename?: 'AuthorsDocument', id: string } | null } } | null } | null> | null } };
+export type GetStudentListQuery = { __typename?: 'Query', getStudentList: { __typename?: 'StudentConnection', totalCount: number, edges?: Array<{ __typename?: 'StudentConnectionEdges', node?: { __typename?: 'StudentDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, data: { __typename?: 'Student', title?: string | null, author?: string | null, date?: string | null, body?: any | null } } | null } | null> | null } };
 
 export type GetTeacherDocumentQueryVariables = Exact<{
   relativePath: Scalars['String'];
 }>;
 
 
-export type GetTeacherDocumentQuery = { __typename?: 'Query', getTeacherDocument: { __typename?: 'TeacherDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, data: { __typename?: 'Teacher', title?: string | null, date?: string | null, body?: any | null, author?: { __typename?: 'AuthorsDocument', id: string } | null } } };
+export type GetTeacherDocumentQuery = { __typename?: 'Query', getTeacherDocument: { __typename?: 'TeacherDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, data: { __typename?: 'Teacher', title?: string | null, author?: string | null, date?: string | null, body?: any | null } } };
 
 export type GetTeacherListQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetTeacherListQuery = { __typename?: 'Query', getTeacherList: { __typename?: 'TeacherConnection', totalCount: number, edges?: Array<{ __typename?: 'TeacherConnectionEdges', node?: { __typename?: 'TeacherDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, data: { __typename?: 'Teacher', title?: string | null, date?: string | null, body?: any | null, author?: { __typename?: 'AuthorsDocument', id: string } | null } } | null } | null> | null } };
+export type GetTeacherListQuery = { __typename?: 'Query', getTeacherList: { __typename?: 'TeacherConnection', totalCount: number, edges?: Array<{ __typename?: 'TeacherConnectionEdges', node?: { __typename?: 'TeacherDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, data: { __typename?: 'Teacher', title?: string | null, author?: string | null, date?: string | null, body?: any | null } } | null } | null> | null } };
 
 export type GetParentDocumentQueryVariables = Exact<{
   relativePath: Scalars['String'];
 }>;
 
 
-export type GetParentDocumentQuery = { __typename?: 'Query', getParentDocument: { __typename?: 'ParentDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, data: { __typename?: 'Parent', title?: string | null, date?: string | null, body?: any | null, author?: { __typename?: 'AuthorsDocument', id: string } | null } } };
+export type GetParentDocumentQuery = { __typename?: 'Query', getParentDocument: { __typename?: 'ParentDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, data: { __typename?: 'Parent', title?: string | null, author?: string | null, date?: string | null, body?: any | null } } };
 
 export type GetParentListQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetParentListQuery = { __typename?: 'Query', getParentList: { __typename?: 'ParentConnection', totalCount: number, edges?: Array<{ __typename?: 'ParentConnectionEdges', node?: { __typename?: 'ParentDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, data: { __typename?: 'Parent', title?: string | null, date?: string | null, body?: any | null, author?: { __typename?: 'AuthorsDocument', id: string } | null } } | null } | null> | null } };
-
-export type GetAuthorsDocumentQueryVariables = Exact<{
-  relativePath: Scalars['String'];
-}>;
-
-
-export type GetAuthorsDocumentQuery = { __typename?: 'Query', getAuthorsDocument: { __typename?: 'AuthorsDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, data: { __typename?: 'Authors', name?: string | null, avatar?: string | null } } };
-
-export type GetAuthorsListQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type GetAuthorsListQuery = { __typename?: 'Query', getAuthorsList: { __typename?: 'AuthorsConnection', totalCount: number, edges?: Array<{ __typename?: 'AuthorsConnectionEdges', node?: { __typename?: 'AuthorsDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, data: { __typename?: 'Authors', name?: string | null, avatar?: string | null } } | null } | null> | null } };
+export type GetParentListQuery = { __typename?: 'Query', getParentList: { __typename?: 'ParentConnection', totalCount: number, edges?: Array<{ __typename?: 'ParentConnectionEdges', node?: { __typename?: 'ParentDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, data: { __typename?: 'Parent', title?: string | null, author?: string | null, date?: string | null, body?: any | null } } | null } | null> | null } };
 
 export const StudentPartsFragmentDoc = gql`
     fragment StudentParts on Student {
   title
-  author {
-    ... on Document {
-      id
-    }
-  }
+  author
   date
   body
 }
@@ -505,11 +417,7 @@ export const StudentPartsFragmentDoc = gql`
 export const TeacherPartsFragmentDoc = gql`
     fragment TeacherParts on Teacher {
   title
-  author {
-    ... on Document {
-      id
-    }
-  }
+  author
   date
   body
 }
@@ -517,19 +425,9 @@ export const TeacherPartsFragmentDoc = gql`
 export const ParentPartsFragmentDoc = gql`
     fragment ParentParts on Parent {
   title
-  author {
-    ... on Document {
-      id
-    }
-  }
+  author
   date
   body
-}
-    `;
-export const AuthorsPartsFragmentDoc = gql`
-    fragment AuthorsParts on Authors {
-  name
-  avatar
 }
     `;
 export const GetStudentDocumentDocument = gql`
@@ -655,47 +553,6 @@ export const GetParentListDocument = gql`
   }
 }
     ${ParentPartsFragmentDoc}`;
-export const GetAuthorsDocumentDocument = gql`
-    query getAuthorsDocument($relativePath: String!) {
-  getAuthorsDocument(relativePath: $relativePath) {
-    sys {
-      filename
-      basename
-      breadcrumbs
-      path
-      relativePath
-      extension
-    }
-    id
-    data {
-      ...AuthorsParts
-    }
-  }
-}
-    ${AuthorsPartsFragmentDoc}`;
-export const GetAuthorsListDocument = gql`
-    query getAuthorsList {
-  getAuthorsList {
-    totalCount
-    edges {
-      node {
-        id
-        sys {
-          filename
-          basename
-          breadcrumbs
-          path
-          relativePath
-          extension
-        }
-        data {
-          ...AuthorsParts
-        }
-      }
-    }
-  }
-}
-    ${AuthorsPartsFragmentDoc}`;
 export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) => Promise<R>
   export function getSdk<C>(requester: Requester<C>) {
     return {
@@ -716,12 +573,6 @@ export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) 
       },
     getParentList(variables?: GetParentListQueryVariables, options?: C): Promise<{data: GetParentListQuery, variables: GetParentListQueryVariables, query: string}> {
         return requester<{data: GetParentListQuery, variables: GetParentListQueryVariables, query: string}, GetParentListQueryVariables>(GetParentListDocument, variables, options);
-      },
-    getAuthorsDocument(variables: GetAuthorsDocumentQueryVariables, options?: C): Promise<{data: GetAuthorsDocumentQuery, variables: GetAuthorsDocumentQueryVariables, query: string}> {
-        return requester<{data: GetAuthorsDocumentQuery, variables: GetAuthorsDocumentQueryVariables, query: string}, GetAuthorsDocumentQueryVariables>(GetAuthorsDocumentDocument, variables, options);
-      },
-    getAuthorsList(variables?: GetAuthorsListQueryVariables, options?: C): Promise<{data: GetAuthorsListQuery, variables: GetAuthorsListQueryVariables, query: string}> {
-        return requester<{data: GetAuthorsListQuery, variables: GetAuthorsListQueryVariables, query: string}, GetAuthorsListQueryVariables>(GetAuthorsListDocument, variables, options);
       }
     };
   }
