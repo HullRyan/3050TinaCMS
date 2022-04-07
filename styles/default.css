@@ -4,248 +4,26 @@
   font-family: "Roboto Mono", monospace;
   font-family: "Roboto Slab", serif;
 */
-.container {
-  color: red;
+:root {
+  --light-gray: #f3f3f1;
+  --gray: #212325;
+  --blue: #48d6e1;
+  --white: hsla(0, 0%, 100%, 1);
+  --yellow: hsla(40, 98%, 60%, 1);
+  --red: hsla(8, 74%, 34%, 1);
+
+  background-color: var(--gray);
+  color: white;
+}
+a {
+  color: white;
+  text-decoration: none;
 }
 body {
   margin: 0;
+  max-width: 100vw;
+  overflow: hidden;
 }
 html {
   font-family: "Inter", sans-serif;
-}
-/*Home Page CSS*/
-.homeBtnImage {
-  width: 80px;
-}
-/* The side navigation menu */
-.sidebar {
-  margin: 0;
-  padding: 0;
-  width: 10rem;
-  background-color: #972817;
-  position: fixed;
-  height: 100%;
-  overflow: auto;
-}
-/* Sidebar links */
-.sidebar a {
-  display: block;
-  color: black;
-  padding: 16px;
-  text-decoration: none;
-  font-size: 1.4rem;
-}
-/* Active/current link */
-.sidebar a.active {
-  background-color: #04aa6d;
-  color: white;
-}
-/* Links on mouse-over */
-.sidebar a:hover:not(.active) {
-  background-color: #555;
-  color: white;
-}
-/* Page content. The value of the margin-left property should match the value of the sidebar's width property */
-.content {
-  margin-left: 11rem;
-  margin-right: 1rem;
-  padding: 1px 16px;
-  padding-top: 2rem;
-  height: 100%;
-}
-.homeBtnImageContainer {
-  width: 100%;
-  background-color: #cacaca;
-  border-bottom: rgb(41, 41, 41) solid 5px;
-  display: flex;
-  justify-content: center;
-}
-.homeBtnImage {
-  border-radius: 20px;
-  margin: 0.5rem;
-}
-.homeBtnImage:hover {
-  background-color: whitesmoke;
-  cursor: pointer;
-}
-/* On screens that are less than 700px wide, make the sidebar into a topbar */
-@media screen and (max-width: 700px) {
-  .sidebar {
-    width: 100%;
-    height: auto;
-    position: relative;
-  }
-  .sidebar a {
-    float: left;
-    font-size: 1.1rem;
-  }
-  .content {
-    margin-left: 0;
-    padding-top: 0%;
-  }
-  .homeBtnImage {
-    width: 6rem;
-  }
-  .homeBtnImageContainer {
-    justify-content: left;
-  }
-}
-/* On screens that are less than 400px, display the bar vertically, instead of horizontally */
-.centered {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.top-left {
-  position: absolute;
-  top: 1%;
-  left: 0.5%;
-  border-radius: 20%;
-  max-width: 7%;
-}
-body {
-  background-color: #d7d7dc;
-}
-.media {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: 5px;
-}
-.one {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: 81px;
-}
-.two {
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 1;
-  grid-row-end: 2;
-}
-.three {
-  grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row-start: 1;
-  grid-row-end: 2;
-}
-.four {
-  grid-column-start: 3;
-  grid-column-end: 4;
-  grid-row-start: 1;
-  grid-row-end: 2;
-}
-.mainPageBody {
-  margin-left: 7%;
-  padding: 2px;
-  display: flex;
-  justify-content: space-between;
-}
-#banner {
-  position: fixed;
-  top: 0;
-  width: 100%;
-}
-.captions {
-  text-align: center;
-}
-.collapsible {
-  background-color: #972817;
-  cursor: pointer;
-  padding: 4px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: x-large;
-  display: flex;
-  justify-content: space-between;
-}
-.active,
-.collapsible:hover {
-  background-color: #7d372c;
-}
-.collapsibleContent {
-  background-color: #bab7b7;
-  overflow: hidden;
-  max-height: 0;
-  transition: max-height 0.2s ease-out;
-}
-p {
-  text-indent: 5%;
-}
-.links {
-  background-color: #355cbd;
-  height: fit-content;
-  border-radius: 10px;
-  padding-bottom: 1%;
-  padding-left: 1%;
-  padding-right: 1%;
-  max-width: 15%;
-}
-ul {
-  list-style-position: inside;
-  padding-left: 0;
-}
-.graph {
-  max-width: 100%;
-  max-height: 100%;
-  margin: 1%;
-}
-.graphWrapper {
-  width: 48%;
-  display: flex;
-  justify-content: space-between;
-}
-.post-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 1%;
-}
-.post {
-  max-width: 1000px;
-}
-.title {
-  font-size: xx-large;
-  font-weight: bold;
-  text-align: center;
-  margin-top: 1%;
-  margin-bottom: 1%;
-}
-.author {
-  font-size: large;
-  text-align: center;
-  margin-top: 1%;
-  margin-bottom: 1%;
-}
-.date {
-  font-size: small;
-  text-align: center;
-  margin-top: 1%;
-  margin-bottom: 1%;
-}
-.list-post {
-  font-size: larger;
-}
-.list-title {
-  font-size: large;
-  font-weight: bold;
-  margin-top: 1%;
-  margin-bottom: 1%;
-}
-.list-author {
-  font-size: medium;
-  margin-top: 1%;
-  margin-bottom: 1%;
-}
-.list-date {
-  font-size: small;
-  margin-top: 1%;
-  margin-bottom: 1%;
-}
-.no-styling {
-  color: inherit;
-  text-decoration: none;
 }
