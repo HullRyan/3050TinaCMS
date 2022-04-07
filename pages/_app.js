@@ -22,6 +22,7 @@ const App = ({ Component, pageProps }) => {
         showEditButton={true}
         editMode={
           <TinaCMS
+          mediaStore={TinaCloudCloudinaryMediaStore}
             cmsCallback={(cms) => {
               /**
                * Enables `tina-admin` specific features in the Tina Sidebar
@@ -39,7 +40,6 @@ const App = ({ Component, pageProps }) => {
                 }
               );
               cms.plugins.add(RouteMapping);
-              mediaStore={TinaCloudCloudinaryMediaStore}
               return cms;
             }}
             documentCreatorCallback={{
