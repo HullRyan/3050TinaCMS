@@ -3,7 +3,7 @@ import { TinaEditProvider } from "tinacms/dist/edit-state";
 import styles from "../styles/default.css";
 import { RouteMappingPlugin } from "tinacms";
 import { useTina } from "tinacms/dist/edit-state";
-// @ts-ignore FIXME: default export needs to be 'ComponentType<{}>
+import { TinaCloudCloudinaryMediaStore } from "next-tinacms-cloudinary";
 const TinaCMS = dynamic(() => import("tinacms"), { ssr: false });
 import { Layout } from "./../components/Layout";
 
@@ -39,7 +39,7 @@ const App = ({ Component, pageProps }) => {
                 }
               );
               cms.plugins.add(RouteMapping);
-
+              mediaStore={TinaCloudCloudinaryMediaStore}
               return cms;
             }}
             documentCreatorCallback={{

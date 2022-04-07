@@ -1,5 +1,6 @@
 import { defineSchema } from "@tinacms/cli";
 
+
 export default defineSchema({
   collections: [
     {

@@ -61,6 +61,7 @@ export type Connection = {
 
 export type Query = {
   __typename?: 'Query';
+  getOptimizedQuery?: Maybe<Scalars['String']>;
   getCollection: Collection;
   getCollections: Array<Collection>;
   node: Node;
@@ -73,6 +74,11 @@ export type Query = {
   getTeacherList: TeacherConnection;
   getParentDocument: ParentDocument;
   getParentList: ParentConnection;
+};
+
+
+export type QueryGetOptimizedQueryArgs = {
+  queryString: Scalars['String'];
 };
 
 
@@ -97,6 +103,7 @@ export type QueryGetDocumentListArgs = {
   after?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Float']>;
   last?: InputMaybe<Scalars['Float']>;
+  sort?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -110,6 +117,7 @@ export type QueryGetStudentListArgs = {
   after?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Float']>;
   last?: InputMaybe<Scalars['Float']>;
+  sort?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -123,6 +131,7 @@ export type QueryGetTeacherListArgs = {
   after?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Float']>;
   last?: InputMaybe<Scalars['Float']>;
+  sort?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -136,6 +145,7 @@ export type QueryGetParentListArgs = {
   after?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Float']>;
   last?: InputMaybe<Scalars['Float']>;
+  sort?: InputMaybe<Scalars['String']>;
 };
 
 export type DocumentConnectionEdges = {
@@ -170,6 +180,7 @@ export type CollectionDocumentsArgs = {
   after?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Float']>;
   last?: InputMaybe<Scalars['Float']>;
+  sort?: InputMaybe<Scalars['String']>;
 };
 
 export type DocumentNode = StudentDocument | TeacherDocument | ParentDocument;
