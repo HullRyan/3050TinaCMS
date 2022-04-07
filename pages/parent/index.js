@@ -32,9 +32,13 @@ export default function Home(props) {
       <h1>Parent Posts</h1>
       <div>
         {postsList.map((post) => (
-          <div key={post.node.id}>
+          <div key={post.node.id} className="list-post">
             <Link href={`/parent/${post.node.sys.filename}`}>
-              <a>{post.node.data.title}</a>
+              <a>
+                <div className="list-title">{post.node.data?.title}</div>
+                <div className="list-author">{post.node.data?.author}</div>
+                <div className="list-date">{new Date(post.node.data?.date).toUTCString()}</div>
+              </a>
             </Link>
           </div>
         ))}

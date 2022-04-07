@@ -29,8 +29,22 @@ export default function Home(props) {
   });
   return (
     <>
-        <TinaMarkdown content={data.getParentDocument.data.body} />
-      <div>{JSON.stringify(data.getParentDocument.data, null, 2)}</div>
+      <div className="post-container">
+        <div className="post">
+          {data?.getParentDocument?.data?.title && (
+            <div className="title">{data?.getParentDocument?.data?.title}</div>
+          )}
+          {data?.getParentDocument?.data?.author && (
+            <div className="author">
+              Posted by: {data?.getParentDocument?.data?.author}
+            </div>
+          )}
+          {data?.getParentDocument?.data?.date && (
+            <div className="date">{data?.getParentDocument?.data?.date}</div>
+          )}
+          <TinaMarkdown content={data?.getParentDocument?.data?.body} />
+        </div>
+      </div>
     </>
   );
 }
