@@ -1,19 +1,13 @@
 import { staticRequest } from "tinacms";
 import { Layout } from "../../components/Layout";
 import { useTina } from "tinacms/dist/edit-state";
-import { TinaMarkdown } from "tinacms/dist/rich-text";
-//import type { TinaMarkdownContent, Components } from "tinacms/dist/rich-text";
 import Post from './../../components/Post';
 
 const query = `query getPost($relativePath: String!) {
   getParentDocument(relativePath: $relativePath) {
     data {
       title
-      author {
-      ... on Document {
-        id
-        }
-      }
+      author
       date
       body
     }
@@ -30,7 +24,7 @@ export default function Home(props) {
   });
   return (
     <>
-      <Post props={data} />
+      <Post props={data.getParentDocument.data} />
     </>
   );
 }

@@ -2,6 +2,7 @@ import { staticRequest } from "tinacms";
 import { Layout } from "../../components/Layout";
 import Link from "next/link";
 import { useTina } from "tinacms/dist/edit-state";
+import PostList from "../../components/PostList";
 
 const query = `{
   getTeacherList{
@@ -30,19 +31,7 @@ export default function Home(props) {
   return (
     <>
       <h1>Teacher Posts</h1>
-      <div>
-        {postsList.map((post) => (
-          <div key={post.node.id} className="list-post">
-            <Link href={`/teacher/${post.node.sys.filename}`}>
-              <a>
-                <div className="list-title">{post.node.data?.title}</div>
-                <div className="list-author">{post.node.data?.author}</div>
-                <div className="list-date">{new Date(post.node.data?.date).toUTCString()}</div>
-              </a>
-            </Link>
-          </div>
-        ))}
-      </div>
+      <PostList postsList={postsList}></PostList>
     </>
   );
 }

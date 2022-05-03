@@ -1,4 +1,4 @@
-import * as React from "react"
+import * as React from "react";
 
 const SvgComponent = (props) => (
   <svg
@@ -682,6 +682,6 @@ const SvgComponent = (props) => (
       }}
     />
   </svg>
-)
+);
 
-export default SvgComponent
+export default SvgComponent;

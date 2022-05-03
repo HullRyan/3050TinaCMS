@@ -86,19 +86,44 @@ export const Layout = (props) => {
         </div>
         <div className="drawer-links">
           <Link href="/">
-            <a onClick={closeDrawer} className={router.pathname == "/" ? "drawer-active" : ""}>Home</a>
+            <a
+              onClick={closeDrawer}
+              className={router.pathname == "/" ? "drawer-active" : ""}
+            >
+              Home
+            </a>
           </Link>
           <Link href="/student">
-            <a onClick={closeDrawer} className={router.pathname == "/student" ? "drawer-active" : ""}>Student</a>
+            <a
+              onClick={closeDrawer}
+              className={router.pathname == "/student" ? "drawer-active" : ""}
+            >
+              Student
+            </a>
           </Link>
           <Link href="/parent">
-            <a onClick={closeDrawer} className={router.pathname == "/parent" ? "drawer-active" : ""}>Parent</a>
+            <a
+              onClick={closeDrawer}
+              className={router.pathname == "/parent" ? "drawer-active" : ""}
+            >
+              Parent
+            </a>
           </Link>
           <Link href="/teacher">
-            <a onClick={closeDrawer} className={router.pathname == "/teacher" ? "drawer-active" : ""}>Teacher</a>
+            <a
+              onClick={closeDrawer}
+              className={router.pathname == "/teacher" ? "drawer-active" : ""}
+            >
+              Teacher
+            </a>
           </Link>
           <Link href="/media">
-            <a onClick={closeDrawer} className={router.pathname == "/media" ? "drawer-active" : ""}>Media</a>
+            <a
+              onClick={closeDrawer}
+              className={router.pathname == "/media" ? "drawer-active" : ""}
+            >
+              Media
+            </a>
           </Link>
         </div>
       </div>
@@ -237,7 +262,7 @@ export const Layout = (props) => {
           padding-left: 2rem;
           padding-top: 2rem;
           font-size: 1.3rem;
-          gap: .5rem;
+          gap: 0.5rem;
         }
         .drawer-links > a {
           display: flex;

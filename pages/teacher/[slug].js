@@ -1,17 +1,13 @@
 import { staticRequest } from "tinacms";
 import { Layout } from "../../components/Layout";
 import { useTina } from "tinacms/dist/edit-state";
-import { TinaMarkdown } from 'tinacms/dist/rich-text'
+import Post from "../../components/Post";
 
 const query = `query getPost($relativePath: String!) {
   getTeacherDocument(relativePath: $relativePath) {
     data {
       title
-      author {
-      ... on Document {
-        id
-        }
-      }
+      author
       date
       body
     }
@@ -29,22 +25,7 @@ export default function Home(props) {
 
   return (
     <>
-      <div className="post-container">
-      <div className="post">
-        {data?.getTeacherDocument?.data?.title && (
-          <div className="title">{data?.getTeacherDocument?.data?.title}</div>
-        )}
-        {data?.getTeacherDocument?.data?.author && (
-          <div className="author">
-            Posted by: {data?.getTeacherDocument?.data?.author}
-          </div>
-        )}
-        {data?.getTeacherDocument?.data?.date && (
-          <div className="date">{data?.getTeacherDocument?.data?.date}</div>
-        )}
-        <TinaMarkdown content={data?.getTeacherDocument?.data?.body} />
-      </div>
-    </div>
+      <Post props={data.getTeacherDocument.data} />
     </>
   );
 }

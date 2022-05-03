@@ -4,6 +4,10 @@ import { Layout } from "../../components/Layout";
 import { useTina } from "tinacms/dist/edit-state";
 import PostList from "../../components/PostList";
 
+/**
+ * Get a list of all student notes.
+ * @returns An array of objects containing the id, data, and filename of each note.
+ */
 const query = `{
   getStudentList{
     edges {
@@ -23,6 +27,11 @@ const query = `{
 }`;
 
 
+/**
+ * This is the home page component.
+ * @param props - the props passed in from the parent component
+ * @returns The function returns a react component.
+ */
 export default function Home(props) {
   // data passes though in production mode and data is updated to the sidebar data in edit-mode
   const { data } = useTina({
@@ -39,6 +48,12 @@ export default function Home(props) {
   );
 }
 
+/**
+ * Given a GraphQL query and variables, return the data from the query.
+ * @param query - the GraphQL query
+ * @param variables - the variables for the GraphQL query
+ * @returns The function returns the data from the query.
+ */
 export const getStaticProps = async () => {
   let data = {};
   const variables = {};
