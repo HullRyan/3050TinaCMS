@@ -38,7 +38,7 @@ export default function PostList(props) {
           display: flex;
           flex-direction: column;
           gap: 10px;
-          width: 20rem;
+          width: 26rem;
           align-items: center;
           border-radius: 10px;
         }
