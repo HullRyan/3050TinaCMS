@@ -3,6 +3,7 @@ import { Layout } from "../../components/Layout";
 import { useTina } from "tinacms/dist/edit-state";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 //import type { TinaMarkdownContent, Components } from "tinacms/dist/rich-text";
+import Post from './../../components/Post';
 
 const query = `query getPost($relativePath: String!) {
   getParentDocument(relativePath: $relativePath) {
@@ -29,22 +30,7 @@ export default function Home(props) {
   });
   return (
     <>
-      <div className="post-container">
-        <div className="post">
-          {data?.getParentDocument?.data?.title && (
-            <div className="title">{data?.getParentDocument?.data?.title}</div>
-          )}
-          {data?.getParentDocument?.data?.author && (
-            <div className="author">
-              Posted by: {data?.getParentDocument?.data?.author}
-            </div>
-          )}
-          {data?.getParentDocument?.data?.date && (
-            <div className="date">{data?.getParentDocument?.data?.date}</div>
-          )}
-          <TinaMarkdown content={data?.getParentDocument?.data?.body} />
-        </div>
-      </div>
+      <Post props={data} />
     </>
   );
 }

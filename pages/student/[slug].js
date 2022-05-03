@@ -1,5 +1,6 @@
 import { staticRequest } from "tinacms";
-import { Layout, Post } from "../../components/Layout";
+import { Layout } from "../../components/Layout";
+import Post from "../../components/Post";
 import { useTina } from "tinacms/dist/edit-state";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 
@@ -22,25 +23,12 @@ export default function Home(props) {
     variables: props.variables,
     data: props.data,
   });
-  console.log(data);
+  
 
   return (
-    <div className="post-container">
-      <div className="post">
-        {data?.getStudentDocument?.data?.title && (
-          <div className="title">{data?.getStudentDocument?.data?.title}</div>
-        )}
-        {data?.getStudentDocument?.data?.author && (
-          <div className="author">
-            Posted by: {data?.getStudentDocument?.data?.author}
-          </div>
-        )}
-        {data?.getStudentDocument?.data?.date && (
-          <div className="date">{data?.getStudentDocument?.data?.date}</div>
-        )}
-        <TinaMarkdown content={data?.getStudentDocument?.data?.body} />
-      </div>
-    </div>
+    <>
+    <Post props={data.getStudentDocument.data} />
+    </>
   );
 }
 

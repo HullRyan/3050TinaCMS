@@ -1,12 +1,14 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import Head from "next/head";
 import Logo from "../components/Logo";
 import { useState } from "react";
 import { HiMenu } from "react-icons/hi";
 
 export const Layout = (props) => {
-  const [currentTab, setCurrentTab] = useState(0);
+  const router = useRouter();
 
+  const [currentTab, setCurrentTab] = useState(0);
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   function closeDrawer() {
@@ -32,24 +34,34 @@ export const Layout = (props) => {
             </Link>
           </div>
           <div className="navbar-title">
-            Wilson Stem Academy <br /> Computer Science Resources
+            Wilson STEM Academy <br /> Computer Science Resources
           </div>
         </div>
         <div className="navbar-links">
           <Link href="/">
-            <a>Home</a>
+            <a className={router.pathname == "/" ? "navbar-active" : ""}>
+              Home
+            </a>
           </Link>
           <Link href="/student">
-            <a>Student</a>
+            <a className={router.pathname == "/student" ? "navbar-active" : ""}>
+              Student
+            </a>
           </Link>
           <Link href="/parent">
-            <a>Parent</a>
+            <a className={router.pathname == "/parent" ? "navbar-active" : ""}>
+              Parent
+            </a>
           </Link>
           <Link href="/teacher">
-            <a>Teacher</a>
+            <a className={router.pathname == "/teacher" ? "navbar-active" : ""}>
+              Teacher
+            </a>
           </Link>
           <Link href="/media">
-            <a>Media</a>
+            <a className={router.pathname == "/media" ? "navbar-active" : ""}>
+              Media
+            </a>
           </Link>
         </div>
         <div className="sidebar-button" onClick={() => setDrawerOpen(true)}>
@@ -74,19 +86,19 @@ export const Layout = (props) => {
         </div>
         <div className="drawer-links">
           <Link href="/">
-            <a onClick={closeDrawer}>Home</a>
+            <a onClick={closeDrawer} className={router.pathname == "/" ? "drawer-active" : ""}>Home</a>
           </Link>
           <Link href="/student">
-            <a onClick={closeDrawer}>Student</a>
+            <a onClick={closeDrawer} className={router.pathname == "/student" ? "drawer-active" : ""}>Student</a>
           </Link>
           <Link href="/parent">
-            <a onClick={closeDrawer}>Parent</a>
+            <a onClick={closeDrawer} className={router.pathname == "/parent" ? "drawer-active" : ""}>Parent</a>
           </Link>
           <Link href="/teacher">
-            <a onClick={closeDrawer}>Teacher</a>
+            <a onClick={closeDrawer} className={router.pathname == "/teacher" ? "drawer-active" : ""}>Teacher</a>
           </Link>
           <Link href="/media">
-            <a onClick={closeDrawer}>Media</a>
+            <a onClick={closeDrawer} className={router.pathname == "/media" ? "drawer-active" : ""}>Media</a>
           </Link>
         </div>
       </div>
@@ -99,15 +111,19 @@ export const Layout = (props) => {
           gap: 1.5rem;
           align-items: center;
           padding: 0 1rem 0 1rem;
-          outline: 4px solid;
-          outline-color: currentcolor;
-          outline-color: var(--yellow);
+          border-bottom: 6px solid var(--yellow);
           font-weight: 600;
           font-size: 1.4rem;
           height: 6rem;
         }
         a {
           text-decoration: none;
+        }
+        .navbar-active {
+          border-bottom: 6px solid var(--red);
+        }
+        .drawer-active {
+          border-right: 6px solid var(--red);
         }
         .navbar-title {
           display: none;
@@ -127,6 +143,7 @@ export const Layout = (props) => {
           height: 100%;
           display: flex;
           align-items: center;
+          transition: all 0.1s;
         }
         .home-button {
           display: flex;
@@ -150,7 +167,7 @@ export const Layout = (props) => {
           top: 0;
           left: 0;
           height: 100%;
-          width: 1000%;
+          width: 100%;
           overflow: hidden;
           background-color: rgba(0, 0, 0, 0.6);
           z-index: 1500;
@@ -161,7 +178,7 @@ export const Layout = (props) => {
         }
         .drawer-offscreen {
           position: absolute;
-          left: -100%;
+          pointer-events: none;
           background-color: rgba(0, 0, 0, 0);
           width: 100%;
           height: 100%;
@@ -217,9 +234,15 @@ export const Layout = (props) => {
         .drawer-links {
           display: flex;
           flex-direction: column;
-          padding-left: 1rem;
+          padding-left: 2rem;
           padding-top: 2rem;
-          gap: 0.2rem;
+          font-size: 1.3rem;
+          gap: .5rem;
+        }
+        .drawer-links > a {
+          display: flex;
+          align-items: center;
+          height: 2rem;
         }
         @media screen and (min-width: 950px) {
           .navbar-title {
@@ -232,7 +255,7 @@ export const Layout = (props) => {
             display: none;
           }
         }
-        @media screen and (min-width: 700px) {
+        @media screen and (min-width: 620px) {
           .navbar-links {
             display: flex;
           }
@@ -247,14 +270,14 @@ export const Layout = (props) => {
           }
         }
         .content {
-          padding-top: 6rem;
+          padding-top: 2rem;
           padding-bottom: 6rem;
           max-width: 80rem;
           margin-left: auto;
           margin-right: auto;
           padding-left: 1.5rem;
           padding-right: 1.5rem;
-          transition: all .2s;
+          transition: all 0.2s;
         }
         @media screen and (min-width: 600px) {
           .content {
