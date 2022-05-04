@@ -5,7 +5,7 @@ import Logo from "./Logo";
 import { useState } from "react";
 import { HiMenu } from "react-icons/hi";
 
-export const Layout = (props) => {
+export default Layout = (props) => {
   const router = useRouter();
 
   const [currentTab, setCurrentTab] = useState(0);
@@ -19,7 +19,7 @@ export const Layout = (props) => {
     return currentTab === tab ? "active" : "";
   }
 
-  
+
   return (
     <div className="page">
       <Head>
