@@ -1,8 +1,18 @@
-<h2 align="center">ITCS 3050 - CMS Template</h2>
+<h1 align="center">ITCS 3050 - CMS Template</h1>
 
 This is a [Tina CMS](https://tina.io/) project.
 
-## Goals
+## Table of Contents
+
+- [Goals](#goals)
+- [Technologies Used](#technologies-used)
+- [Project Structure](#project-structure)
+  - [Goals](#goals)
+- [Goals](#goals)
+- [Goals](#goals)
+- [Goals](#goals)
+
+### Goals
 
 This project is meant as a template for future projects, showing the usage of TinaCMS as a GitHub based Content Management System.  
 
