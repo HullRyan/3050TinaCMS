@@ -1,5 +1,5 @@
 import { staticRequest } from "tinacms";
-import { Post } from "../../components/Post.js";
+import { Post } from "../../components/Post";
 import { useTina } from "tinacms/dist/edit-state";
 
 /**

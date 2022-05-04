@@ -1,6 +1,6 @@
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 
-export default function Post({data}) {
+export const Post = ({ data }) => {
   const props = data.props;
   return (
     <div className="post">
@@ -52,8 +52,7 @@ export default function Post({data}) {
             font-size: 2.5rem;
           }
         }
-
       `}</style>
     </div>
   );
-}
+};
