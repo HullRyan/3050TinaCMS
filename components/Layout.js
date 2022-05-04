@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import Logo from "../components/Logo";
+import Logo from "./logo";
 import { useState } from "react";
 import { HiMenu } from "react-icons/hi";
 

@@ -1,7 +1,6 @@
 import { staticRequest } from "tinacms";
-import { Layout } from "../../components/Layout";
 import { useTina } from "tinacms/dist/edit-state";
-import Post from "../../components/Post";
+import Post from "../../components/post";
 
 const query = `query getPost($relativePath: String!) {
   getTeacherDocument(relativePath: $relativePath) {

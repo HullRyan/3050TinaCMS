@@ -5,7 +5,7 @@ import { RouteMappingPlugin } from "tinacms";
 import { useTina } from "tinacms/dist/edit-state";
 import { TinaCloudCloudinaryMediaStore } from "next-tinacms-cloudinary";
 const TinaCMS = dynamic(() => import("tinacms"), { ssr: false });
-import { Layout } from "./../components/Layout";
+import { Layout } from "./../components/layout";
 
 const branch = "main";
 // When working locally, hit our local filesystem.
