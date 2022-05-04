@@ -3,14 +3,12 @@ import { useTina } from "tinacms/dist/edit-state";
 import PostList from "../../components/PostList";
 
 const query = `{
-  getTeacherList{
+  teacherConnection {
     edges {
       node {
         id
-        data { 
-          title
-        }
-        sys {
+        title
+        _sys {
           filename
         }
       }
@@ -25,7 +23,7 @@ export default function Home(props) {
     variables: {},
     data: props.data,
   });
-  const postsList = data.getTeacherList.edges;
+  const postsList = data.teacherConnection.edges;
   return (
     <>
       <h1>Teacher Posts</h1>

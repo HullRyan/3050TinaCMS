@@ -3,14 +3,14 @@ import { useTina } from "tinacms/dist/edit-state";
 import PostList from "../../components/PostList";
 
 const query = `{
-  getParentList{
+  parentConnection {
     edges {
       node {
         id
         data { 
           title
         }
-        sys {
+        _sys {
           filename
         }
       }

@@ -7,18 +7,16 @@ import PostList from "../../components/PostList";
  * @returns An array of objects containing the id, data, and filename of each note.
  */
 const query = `{
-  getStudentList{
+  studentConnection {
     edges {
       node {
         id
-        data { 
-          title
-          author
-          date
-        }
-        sys {
+        _sys {
           filename
         }
+        title  
+        author
+        date
       }
     }
   }
@@ -37,7 +35,8 @@ export default function Home(props) {
     variables: {},
     data: props.data,
   });
-  const postsList = data.getStudentList.edges;
+  console.log(data);
+  const postsList = data.studentConnection.edges;
   return (
     <>
       <h1>Student Posts</h1>

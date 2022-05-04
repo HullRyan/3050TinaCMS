@@ -1,6 +1,6 @@
-query getStudentDocument($relativePath: String!) {
-  getStudentDocument(relativePath: $relativePath) {
-    sys {
+query student($relativePath: String!) {
+  student(relativePath: $relativePath) {
+    _sys {
       filename
       basename
       breadcrumbs
@@ -9,19 +9,17 @@ query getStudentDocument($relativePath: String!) {
       extension
     }
     id
-    data {
-      ...StudentParts
-    }
+    ...StudentParts
   }
 }
 
-query getStudentList {
-  getStudentList {
+query studentConnection {
+  studentConnection {
     totalCount
     edges {
       node {
         id
-        sys {
+        _sys {
           filename
           basename
           breadcrumbs
@@ -29,17 +27,15 @@ query getStudentList {
           relativePath
           extension
         }
-        data {
-          ...StudentParts
-        }
+        ...StudentParts
       }
     }
   }
 }
 
-query getTeacherDocument($relativePath: String!) {
-  getTeacherDocument(relativePath: $relativePath) {
-    sys {
+query teacher($relativePath: String!) {
+  teacher(relativePath: $relativePath) {
+    _sys {
       filename
       basename
       breadcrumbs
@@ -48,19 +44,17 @@ query getTeacherDocument($relativePath: String!) {
       extension
     }
     id
-    data {
-      ...TeacherParts
-    }
+    ...TeacherParts
   }
 }
 
-query getTeacherList {
-  getTeacherList {
+query teacherConnection {
+  teacherConnection {
     totalCount
     edges {
       node {
         id
-        sys {
+        _sys {
           filename
           basename
           breadcrumbs
@@ -68,17 +62,15 @@ query getTeacherList {
           relativePath
           extension
         }
-        data {
-          ...TeacherParts
-        }
+        ...TeacherParts
       }
     }
   }
 }
 
-query getParentDocument($relativePath: String!) {
-  getParentDocument(relativePath: $relativePath) {
-    sys {
+query parent($relativePath: String!) {
+  parent(relativePath: $relativePath) {
+    _sys {
       filename
       basename
       breadcrumbs
@@ -87,19 +79,17 @@ query getParentDocument($relativePath: String!) {
       extension
     }
     id
-    data {
-      ...ParentParts
-    }
+    ...ParentParts
   }
 }
 
-query getParentList {
-  getParentList {
+query parentConnection {
+  parentConnection {
     totalCount
     edges {
       node {
         id
-        sys {
+        _sys {
           filename
           basename
           breadcrumbs
@@ -107,9 +97,7 @@ query getParentList {
           relativePath
           extension
         }
-        data {
-          ...ParentParts
-        }
+        ...ParentParts
       }
     }
   }

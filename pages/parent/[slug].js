@@ -1,15 +1,13 @@
 import { staticRequest } from "tinacms";
 import { useTina } from "tinacms/dist/edit-state";
-import PostTest from '../../components/PostTest';
+import Post from "../../components/Post";
 
-const query = `query getPostDocument($relativePath: String!) {
-  getParentDocument(relativePath: $relativePath) {
-    data {
-      title
-      author
-      date
-      body
-    }
+const query = `query parent($relativePath: String!) {
+  parent(relativePath: $relativePath) {
+    title
+    author
+    date
+    body
   }
 }
 `;
@@ -23,7 +21,7 @@ export default function Home(props) {
   });
   return (
     <>
-      <Post props={data.getParentDocument.data} />
+      <Post props={data.parent.data} />
     </>
   );
 }
@@ -31,10 +29,10 @@ export default function Home(props) {
 export const getStaticPaths = async () => {
   const postsResponse = await staticRequest({
     query: `{
-        getParentList{
+        parentConnection {
           edges {
             node {
-              sys {
+              _sys {
                 filename
               }
             }
@@ -43,8 +41,8 @@ export const getStaticPaths = async () => {
       }`,
     variables: {},
   });
-  const paths = postsResponse.getParentList.edges.map((x) => {
-    return { params: { slug: x.node.sys.filename } };
+  const paths = postsResponse.parentConnection.edges.map((x) => {
+    return { params: { slug: x.node._sys.filename } };
   });
 
   return {

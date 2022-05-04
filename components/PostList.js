@@ -10,12 +10,12 @@ export default function PostList(props) {
     <div className="post-list">
       {props.postsList.map((post) => (
         <div key={post.node.id}>
-          <Link href={`/student/${post.node.sys.filename}`}>
+          <Link href={`/student/${post.node._sys.filename}`}>
             <a className="list-post">
-              <div className="list-title">{post.node.data?.title}</div>
-              <div className="list-author">{post.node.data?.author}</div>
+              <div className="list-title">{post.node?.title}</div>
+              <div className="list-author">{post.node?.author}</div>
               <div className="list-date">
-                {new Date(post.node.data?.date).toUTCString()}
+                {new Date(post.node?.date).toUTCString()}
               </div>
             </a>
           </Link>
