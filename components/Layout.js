@@ -19,6 +19,7 @@ export const Layout = (props) => {
     return currentTab === tab ? "active" : "";
   }
 
+  
   return (
     <div className="page">
       <Head>
