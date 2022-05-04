@@ -30,55 +30,55 @@ The following are the technologies used, linked to getting started tutorials on 
 
 #### Folder Structure
 
-📦3050TinaCMS - *Main Project Folder*
- ┣ 📂.tina - *GraphQL Structure (TinaCMS)* 
- ┃ ┣ 📂__generated__ - *Generated files*
- ┃ ┃ ┣ 📜frags.gql - *Fragments for TinaCMS*
- ┃ ┃ ┣ 📜queries.gql - *GraphQL Queries*
- ┃ ┃ ┣ 📜schema.gql - *GraphQL Schema*
- ┃ ┃ ┣ 📜types.ts - *GraphQL Types*
- ┃ ┃ ┣ 📜_graphql.json - *GraphQL Configuration*
- ┃ ┃ ┣ 📜_lookup.json - *Lookup Configuration*
- ┃ ┃ ┗ 📜_schema.json - *Schema Configuration*
- ┃ ┗ 📜schema.ts - *Schema for TinaCMS*
- ┣ 📂components - *Components*
- ┃ ┣ 📜Layout.js - *Layout Component*
- ┃ ┣ 📜Logo.js - *Logo Component*
- ┃ ┣ 📜Post.js - *Post Component*
- ┃ ┗ 📜PostList.js - *Post List Component*
- ┣ 📂content - *Content*
- ┃ ┣ 📂parent - *Parent Content*
- ┃ ┣ 📂student - *Student Content*
- ┃ ┃ ┗ 📜testPost3.mdx - *Example Post*
- ┃ ┗ 📂teacher - *Teacher Content*
- ┣ 📂pages - *Pages*
- ┃ ┣ 📂admin - *Admin Pages*
- ┃ ┃ ┗ 📜[[...slug]].js - *Admin Page*
- ┃ ┣ 📂api - *API Pages*
- ┃ ┃ ┗ 📂cloudinary - *Cloudinary API Page*
- ┃ ┃ ┃ ┗ 📜[...media].js - *Cloudinary API Setup Page*
- ┃ ┣ 📂parent - *Parent Pages*
- ┃ ┃ ┣ 📜index.js - *Parent Home Page*
- ┃ ┃ ┗ 📜[slug].js - *Parent Post Slug Page*
- ┃ ┣ 📂student - *Student Pages*
- ┃ ┃ ┣ 📜index.js - *Student Home Page*
- ┃ ┃ ┗ 📜[slug].js - *Student Post Slug Page*
- ┃ ┣ 📂teacher - *Teacher Pages*
- ┃ ┃ ┣ 📜index.js - *Teacher Home Page*
- ┃ ┃ ┗ 📜[slug].js - *Teacher Post Slug Page*
- ┃ ┣ 📜index.js - *Home Page*
- ┃ ┣ 📜media.js - *Media Page*
- ┃ ┣ 📜_app.js - *App Page, Main application setup*
- ┃ ┗ 📜_document.js - *Document Page, Main HTML document setup*
- ┣ 📂public - *Public Files*
- ┃ ┣ 📜favicon.ico - *Favicon*
- ┃ ┗ 📜vercel.svg - *Vercel Logo*
- ┣ 📂styles - *Styles*
- ┃ ┗ 📜default.css - *Default Global CSS*
- ┣ 📜next.config.js - *Next.js Configuration*
- ┣ 📜package-lock.json - *Package Lock*
- ┣ 📜package.json - *Package JSON*
-
+📦3050TinaCMS - *Main Project Folder*  
+ ┣ 📂.tina - *GraphQL Structure (TinaCMS)*  
+ ┃ ┣ 📂__generated__ - *Generated files*  
+ ┃ ┃ ┣ 📜frags.gql - *Fragments for TinaCMS*  
+ ┃ ┃ ┣ 📜queries.gql - *GraphQL Queries*  
+ ┃ ┃ ┣ 📜schema.gql - *GraphQL Schema*  
+ ┃ ┃ ┣ 📜types.ts - *GraphQL Types*  
+ ┃ ┃ ┣ 📜_graphql.json - *GraphQL Configuration*  
+ ┃ ┃ ┣ 📜_lookup.json - *Lookup Configuration*  
+ ┃ ┃ ┗ 📜_schema.json - *Schema Configuration*  
+ ┃ ┗ 📜schema.ts - *Schema for TinaCMS*  
+ ┣ 📂components - *Components*  
+ ┃ ┣ 📜Layout.js - *Layout Component*  
+ ┃ ┣ 📜Logo.js - *Logo Component*  
+ ┃ ┣ 📜Post.js - *Post Component*  
+ ┃ ┗ 📜PostList.js - *Post List Component*  
+ ┣ 📂content - *Content*  
+ ┃ ┣ 📂parent - *Parent Content*  
+ ┃ ┣ 📂student - *Student Content*  
+ ┃ ┃ ┗ 📜testPost3.mdx - *Example Post*  
+ ┃ ┗ 📂teacher - *Teacher Content*  
+ ┣ 📂pages - *Pages*  
+ ┃ ┣ 📂admin - *Admin Pages*  
+ ┃ ┃ ┗ 📜[[...slug]].js - *Admin Page*  
+ ┃ ┣ 📂api - *API Pages*  
+ ┃ ┃ ┗ 📂cloudinary - *Cloudinary API Page*  
+ ┃ ┃ ┃ ┗ 📜[...media].js - *Cloudinary API Setup Page*  
+ ┃ ┣ 📂parent - *Parent Pages*  
+ ┃ ┃ ┣ 📜index.js - *Parent Home Page*  
+ ┃ ┃ ┗ 📜[slug].js - *Parent Post Slug Page*  
+ ┃ ┣ 📂student - *Student Pages*  
+ ┃ ┃ ┣ 📜index.js - *Student Home Page*  
+ ┃ ┃ ┗ 📜[slug].js - *Student Post Slug Page*  
+ ┃ ┣ 📂teacher - *Teacher Pages*  
+ ┃ ┃ ┣ 📜index.js - *Teacher Home Page*  
+ ┃ ┃ ┗ 📜[slug].js - *Teacher Post Slug Page*  
+ ┃ ┣ 📜index.js - *Home Page*  
+ ┃ ┣ 📜media.js - *Media Page*  
+ ┃ ┣ 📜_app.js - *App Page, Main application setup*  
+ ┃ ┗ 📜_document.js - *Document Page, Main HTML document setup*   
+ ┣ 📂public - *Public Files*  
+ ┃ ┣ 📜favicon.ico - *Favicon*  
+ ┃ ┗ 📜vercel.svg - *Vercel Logo*  
+ ┣ 📂styles - *Styles*  
+ ┃ ┗ 📜default.css - *Default Global CSS*  
+ ┣ 📜next.config.js - *Next.js Configuration*  
+ ┣ 📜package-lock.json - *Package Lock*  
+ ┣ 📜package.json - *Package JSON*  
+  
 #### Content Structure
 
 - Content schema is configured in the TinaCMS schema.gql file.
