@@ -1,8 +1,7 @@
 import { staticRequest } from "tinacms";
 import { Layout } from "../components/Layout";
-import Link from "next/link";
 import { useTina } from "tinacms/dist/edit-state";
-import PostList from "../components/PostList.js";
+import { PostList } from "../../components/PostList.js";
 
 const query = `{
   getParentList{
