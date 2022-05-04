@@ -52,6 +52,7 @@ export default function Post(data) {
             font-size: 2.5rem;
           }
         }
+        
       `}</style>
     </div>
   );
