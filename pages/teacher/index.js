@@ -1,7 +1,7 @@
 import { staticRequest } from "tinacms";
 import Link from "next/link";
 import { useTina } from "tinacms/dist/edit-state";
-import PostList from "../../Components/PostLis.js";
+import PostList from "../components/PostLis.js";
 
 const query = `{
   getTeacherList{
