@@ -5,7 +5,7 @@ import Logo from "./Logo";
 import { useState } from "react";
 import { HiMenu } from "react-icons/hi";
 
-export default Layout = (props) => {
+export default function Layout(props) {
   const router = useRouter();
 
   const [currentTab, setCurrentTab] = useState(0);
