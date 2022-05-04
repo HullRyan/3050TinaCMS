@@ -15,7 +15,7 @@
 - [Getting Started](#getting-started)
 - [Learn More](#learn-more)
 
-### Goals
+## Goals
 
 This project is meant as a template for future projects, showing the usage of TinaCMS as a GitHub based Content Management System.  
 
