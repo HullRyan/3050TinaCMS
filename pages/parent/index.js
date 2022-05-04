@@ -7,9 +7,7 @@ const query = `{
     edges {
       node {
         id
-        data { 
-          title
-        }
+        title
         _sys {
           filename
         }
@@ -25,7 +23,7 @@ export default function Home(props) {
     variables: {},
     data: props.data,
   });
-  const postsList = data.getParentList.edges;
+  const postsList = data.parentConnection.edges;
   return (
     <>
       <h1>Parent Posts</h1>
