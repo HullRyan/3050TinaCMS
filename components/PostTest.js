@@ -1,6 +1,6 @@
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 
-export const Post = ({ data }) => {
+export const PostTest = ({ data }) => {
   const props = data.props;
   return (
     <div className="post">
