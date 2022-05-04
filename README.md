@@ -6,7 +6,7 @@ This is a [Tina CMS](https://tina.io/) project.
 
 This project is meant as a template for future projects, showing the usage of TinaCMS as a GitHub based Content Management System.  
 
-### Technologies Used
+## Technologies Used
 
 The following are the technologies used, linked to getting started tutorials on the usage of them.
 
@@ -19,16 +19,16 @@ The following are the technologies used, linked to getting started tutorials on 
 - [TinaCMS](https://tina.io/docs/setup-overview/)
   - Git-backed CMS, uses [GraphQL](https://graphql.org/learn/) to query data stored in [MDX](https://mdxjs.com/docs/) files, and allows for multiple users to create content without knowing how to code.
   
-### Project Structure
+## Project Structure
 
-#### Components
+### Components
 
 - The layout component is used to render the header and footer of the site.
 - The logo component is used to render the logo of the site.
 - The post component is used to render the individual posts.
 - The post list component is used to render the list of posts.
 
-#### Folder Structure
+### Folder Structure
 
 📦3050TinaCMS - *Main Project Folder*  
  ┣ 📂.tina - *GraphQL Structure (TinaCMS)*  
@@ -79,7 +79,7 @@ The following are the technologies used, linked to getting started tutorials on 
  ┣ 📜package-lock.json - *Package Lock*  
  ┣ 📜package.json - *Package JSON*  
   
-#### Content Structure
+### Content Structure
 
 - Content schema is configured in the TinaCMS schema.gql file.
 - Currently, the posts are sperated into 3 different groups, parent, student, and teacher.
