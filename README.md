@@ -1,16 +1,19 @@
 <h1 align="center">ITCS 3050 - CMS Template</h1>
 
-This is a [Tina CMS](https://tina.io/) project.
-
 ## Table of Contents
 
 - [Goals](#goals)
 - [Technologies Used](#technologies-used)
 - [Project Structure](#project-structure)
-  - [Goals](#goals)
-- [Goals](#goals)
-- [Goals](#goals)
-- [Goals](#goals)
+  - [Components](#components)
+    - [Current Components](#current-components)
+    - [Making new Components](#making-new-components)
+    - [Adding Static Content to Pages](#adding-static-content-to-pages)
+  - [Folder Structure](#folder-structure)
+  - [Content Structure](#content-structure)
+  - [Styling](#styling)
+- [Getting Started](#getting-started)
+- [Learn More](#learn-more)
 
 ### Goals
 
@@ -33,10 +36,38 @@ The following are the technologies used, linked to getting started tutorials on 
 
 ### Components
 
+The following content is the base of the project, and is used to create the content structure.
+
+#### Current Components
+
 - The layout component is used to render the header and footer of the site.
 - The logo component is used to render the logo of the site.
 - The post component is used to render the individual posts.
 - The post list component is used to render the list of posts.
+
+#### Making new Components
+
+- React components in this project follow the functional component pattern, which allows for the component to be used in multiple places without having to copy and paste the same code.
+- Components are written in [JSX](https://reactjs.org/docs/introducing-jsx.html).
+- Components can be imported and used in other components, as well as used in Pages.
+
+#### Adding Static Content to Pages
+
+- Pages in this project are stored in the [pages](./pages) folder.
+- Pages are written in [JSX](https://reactjs.org/docs/introducing-jsx.html).
+- Static HTML content can be added inside of the return function of the page component.
+- Local styling should be added to the page component, using styled JSX.
+- Global styling should be added to the `default.css` file.
+- Global style variables should be stored in the `default.css` file.
+- Theming colors for the site are also stored in the `default.css` file, and can be accessed inside of any component using styled JSX with ```var(--[variable name])```.
+
+Transfering content from a static HTML file to inside an existing react component requires the following:  
+
+- Changing all of the ```class``` tags to ```className``` tags.
+- Writing the content inside of a ```div``` or empty ```<>``` tag.
+- Adding the styling into the component, or ```default.css```.
+
+For steps to create a new functional component, follow this [guide](https://reactjs.org/docs/components-and-props.html).
 
 ### Folder Structure
 
@@ -63,23 +94,23 @@ The following are the technologies used, linked to getting started tutorials on 
  ┃ ┗ 📂teacher - *Teacher Content*  
  ┣ 📂pages - *Pages*  
  ┃ ┣ 📂admin - *Admin Pages*  
- ┃ ┃ ┗ 📜[[...slug]].js - *Admin Page*  
+ ┃ ┃ ┗ 📜\[\[...slug]].js - *Admin Page*  
  ┃ ┣ 📂api - *API Pages*  
  ┃ ┃ ┗ 📂cloudinary - *Cloudinary API Page*  
- ┃ ┃ ┃ ┗ 📜[...media].js - *Cloudinary API Setup Page*  
+ ┃ ┃ ┃ ┗ 📜\[...media].js - *Cloudinary API Setup Page*  
  ┃ ┣ 📂parent - *Parent Pages*  
  ┃ ┃ ┣ 📜index.js - *Parent Home Page*  
- ┃ ┃ ┗ 📜[slug].js - *Parent Post Slug Page*  
+ ┃ ┃ ┗ 📜\[slug].js - *Parent Post Slug Page*  
  ┃ ┣ 📂student - *Student Pages*  
  ┃ ┃ ┣ 📜index.js - *Student Home Page*  
- ┃ ┃ ┗ 📜[slug].js - *Student Post Slug Page*  
+ ┃ ┃ ┗ 📜\[slug].js - *Student Post Slug Page*  
  ┃ ┣ 📂teacher - *Teacher Pages*  
  ┃ ┃ ┣ 📜index.js - *Teacher Home Page*  
- ┃ ┃ ┗ 📜[slug].js - *Teacher Post Slug Page*  
+ ┃ ┃ ┗ 📜\[slug].js - *Teacher Post Slug Page*  
  ┃ ┣ 📜index.js - *Home Page*  
  ┃ ┣ 📜media.js - *Media Page*  
  ┃ ┣ 📜_app.js - *App Page, Main application setup*  
- ┃ ┗ 📜_document.js - *Document Page, Main HTML document setup*   
+ ┃ ┗ 📜_document.js - *Document Page, Main HTML document setup*
  ┣ 📂public - *Public Files*  
  ┃ ┣ 📜favicon.ico - *Favicon*  
  ┃ ┗ 📜vercel.svg - *Vercel Logo*  
@@ -186,6 +217,8 @@ Below is an example used in the ```Post.js``` component:
 - The ```global``` class is used to apply the styles to all pages.
 - Note that the ```<style>``` tag needs to be within the wrapping component tag, and will throw errors if outside of the components scope.
 - React requires ```className``` to be used instead of ```class``` for styling.
+
+If it is needed to override the default styles, the ```default.css``` file can be edited.
 
 ## Getting Started
 
