@@ -1,6 +1,6 @@
 import { staticRequest } from "tinacms";
 import { useTina } from "tinacms/dist/edit-state";
-import PostList from "../../components/postList";
+import PostList from "../../Components/PostList.js";
 
 /**
  * Get a list of all student notes.
