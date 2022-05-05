@@ -13,6 +13,8 @@
   - [Content Structure](#content-structure)
   - [Styling](#styling)
 - [Layout](#layout)
+  - [Student Home Page](#student-home-page)
+  - [Post Component](#post-component)
 - [Getting Started](#getting-started)
 - [Learn More](#learn-more)
 
