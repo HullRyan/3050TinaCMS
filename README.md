@@ -20,7 +20,9 @@
 
 ## Goals
 
-This project is meant as a template for future projects, showing the usage of TinaCMS as a GitHub based Content Management System.  
+Project made for ITCS 3050 - Topics in Computer Science at UNC at Charlotte.
+
+This project is meant as a template for future projects, showing the usage of TinaCMS as a GitHub based Content Management System. The goal is to provide a simple, easy to use, and flexible CMS that can be used to create a website for a student or a company.  
 
 ## Technologies Used
 
