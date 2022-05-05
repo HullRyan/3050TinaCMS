@@ -12,6 +12,7 @@
   - [Folder Structure](#folder-structure)
   - [Content Structure](#content-structure)
   - [Styling](#styling)
+- [Layout](#layout)
 - [Getting Started](#getting-started)
 - [Learn More](#learn-more)
 
@@ -219,6 +220,42 @@ Below is an example used in the ```Post.js``` component:
 - React requires ```className``` to be used instead of ```class``` for styling.
 
 If it is needed to override the default styles, the ```default.css``` file can be edited.
+
+### Layout  
+
+When building web applications it is important to start it as mobile first, and then scale it up to desktop.
+For this reason, the layout of the website is designed with minimal but efficient media queries, which on small screen devices will change the post and layout components. The styling is minimal, and laid out in specifc components, which are then combined into the main layout. Below are the components used in the layout:
+
+#### Student Home Page
+
+- This page is the home page for the student group.  
+- It currently displays the latest posts, and has a link to the blog page.  
+- This page uses the PostList component to display the posts.  
+
+<p align="center">
+  <img height="500" src="public/screenshots/student-index.png"/>
+</p>
+
+#### Post Component
+
+- This is an example of a post page on a large screen.  
+
+<p align="center">
+  <img height="500" src="public/screenshots/post-lg.png"/>
+</p>
+
+- This is an example of a post page on a medium screen.  
+
+<p align="center">
+  <img height="500" src="public/screenshots/post-md.png"/>
+</p>
+
+- This is an example of a post page on a small screen, with the side menu opened.  
+
+<p align="center">
+  <img height="500" src="public/screenshots/post-sm.png"/>
+  <img height="500" src="public/screenshots/sidebar.png"/>
+</p>
 
 ## Getting Started
 
